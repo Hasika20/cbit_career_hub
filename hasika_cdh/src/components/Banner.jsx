@@ -39,7 +39,12 @@ const Banner = ({ query, handleInputChange }) => {
             />
             <FiMapPin className="absolute mt-2.5 ml-2 text-gray-400" />
           </div>
-          <button type="submit" className="bg-blue py-2 px-8 text-white md:rounded-s-none rounded">Search</button>
+          <button
+            type="submit"
+            className="bg-blue py-2 px-8 text-white md:rounded-s-none rounded"
+          >
+            Search
+          </button>
         </div>
       </form>
     </div>

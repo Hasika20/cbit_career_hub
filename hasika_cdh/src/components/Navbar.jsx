@@ -93,9 +93,9 @@ const Navbar = () => {
               </NavLink>
             </li>
           ))}
-          <li className="text-white py-1"><Link to="/login">
-            Sign In
-          </Link></li>
+          <li className="text-white py-1">
+            <Link to="/login">Sign In</Link>
+          </li>
         </ul>
       </div>
     </header>
