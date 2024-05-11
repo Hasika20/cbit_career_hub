@@ -1,9 +1,19 @@
-import {createBrowserRouter} from "react-router-dom";
-const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <div>Hello world!</div>,
-    },
-  ]);
+import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
+import Home from "../Pages/Home";
+import About from "../Pages/About";
 
-  export default router;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+    ],
+  },
+]);
+
+export default router;
