@@ -7,13 +7,27 @@ const CreateJob = () => {
   const {
     register,
     handleSubmit,
+    reset,
     watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     data.skills = selectedOption;
-    console.log(data);
+    // console.log(data);
+    fetch("http://localhost:5000/post-job", {
+      method: "POST",
+      headers: {"content-Type": "application/json"},
+      body: JSON.stringify(data)
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if(result.acknowledged === true ) {
+          alert("Job Posted Successfully!!!")
+        }
+        reset()
+      });
   };
 
   const options = [
@@ -155,27 +169,28 @@ const CreateJob = () => {
 
           <div className="w-full">
             <label className="block mb-2 text-lg">Job Description</label>
-            <textarea className="w-full pl-3 py-1.5 focus:outline-none placeholder:text-gray-400" 
-            rows={6}
-            placeholder="Job Description"
-            {...register("description")} />
+            <textarea
+              className="w-full pl-3 py-1.5 focus:outline-none placeholder:text-gray-400"
+              rows={6}
+              placeholder="Job Description"
+              {...register("description")}
+            />
           </div>
 
           <div className="w-full">
             <label className="block mb-2 text-lg">Job Posted By</label>
             <input
-                type="email"
-                placeholder="your email"
-                {...register("postedBy")}
-                className="create-job-input"
-              />
+              type="email"
+              placeholder="your email"
+              {...register("postedBy")}
+              className="create-job-input"
+            />
           </div>
 
           <input
             type="submit"
             className="blockmt-12 bg-blue text-white font-semibold px-8 py-2 rounded-sm cursor-pointer"
           />
-
         </form>
       </div>
     </div>
